@@ -16,7 +16,7 @@ var _ = require('lodash')
 var path = require('path')
 var sass = require('node-sass')
 var settingUtil = require('../settings/settingsUtil')
-// var flip = require('css-flip');
+var flip = require('css-flip');
 
 var buildsass = {}
 
@@ -55,7 +55,7 @@ function dynamicSass (entry, vars, success, error) {
 
 function save (result) {
   var fs = require('fs')
-  // result = flip(result);
+  result = flip(result);
   var themeCss = path.join(__dirname, '../../public/css/app.min.css')
   fs.writeFileSync(themeCss, result)
 }
