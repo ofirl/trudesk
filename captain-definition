@@ -1,0 +1,29 @@
+{
+ "schemaVersion" :2 ,
+ "dockerfileLines": [
+                        "FROM ubuntu:18.04",
+
+                        "RUN mkdir -p /usr/src/app",
+                        "WORKDIR /usr/src/app",
+
+                        "RUN apt update && apt-get update && apt upgrade -y && apt-get upgrade -y",
+                        "RUN apt-get install curl -y",
+                        "RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -",
+                        "RUN apt-get install -y nodejs",
+                        "RUN apt-get install -y bash make gcc g++ python",
+                        "RUN npm install -g yarn",
+
+                        "COPY . /usr/src/app",
+
+                        "RUN yarn install --production=true",
+                        "RUN npm rebuild bcrypt node-sass --build-from-source",
+                        "RUN cp -R node_modules prod_node_modules",
+                        "RUN yarn install --production=false",
+                        "RUN yarn build",
+                        "RUN rm -rf node_modules && mv prod_node_modules node_modules",
+
+                        "ENV NODE_ENV production",
+                        "EXPOSE 8118",
+                        "CMD [ \"npm\", \"start\" ]"
+                    ]
+}
