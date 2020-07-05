@@ -32,7 +32,7 @@ public/
 
 #custom
 package-lock.json
-config.json
+# config.json
 import.csv
 /src/mailer/templates/promo/
 *.pem

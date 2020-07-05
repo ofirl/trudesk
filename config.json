@@ -1,0 +1,14 @@
+{
+  "mongo": {
+    "host": "shopndine-db.ofirl.com",
+    "port": "27018",
+    "username": "ofirl",
+    "password": "Ofir2401",
+    "database": "trudesk",
+    "shard": false
+  },
+  "tokens": {
+    "secret": "e7ef511a7552088df2bb34b86796c6314ba781f54bd351c44727662ca279eb0a3db05db3",
+    "expires": 900
+  }
+}
