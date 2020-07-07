@@ -95,7 +95,7 @@ class SingleSelect extends React.Component {
 
     return (
       <div className={'uk-clearfix'}>
-        <div className='uk-width-1-1 uk-float-right' style={{ paddingRight: '10px', width: width }}>
+        <div className='uk-width-1-1 uk-float-right' style={{ paddingRight: '10px', paddingLeft: '10px', width: width }}>
           <select
             className='selectize'
             ref={select => {

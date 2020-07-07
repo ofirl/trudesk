@@ -51,7 +51,7 @@ class PDropDown extends React.Component {
       >
         <div className='actions'>
           {titleHref && <a href={titleHref}>{title}</a>}
-          {!titleHref && <span style={{ paddingLeft: '5px' }}>{title}</span>}
+          {!titleHref && <span style={{ paddingRight: '5px' }}>{title}</span>}
           {rightComponent && <div className='uk-float-right'>{rightComponent}</div>}
         </div>
         <div className='items close-on-click'>

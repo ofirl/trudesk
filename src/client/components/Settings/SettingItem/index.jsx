@@ -26,7 +26,7 @@ class SettingItem extends React.Component {
       <div className='setting-item-wrap uk-margin-medium-bottom'>
         <div className={'panel trupanel nopadding no-hover-shadow ' + extraClass || ''} style={{ minHeight: '60px' }}>
           <div className='left'>
-            <h6 style={{ padding: '0 0 0 15px', margin: '15px 0 0 0', fontSize: '16px', lineHeight: '14px' }}>
+            <h6 style={{ padding: '0 15px 0 15px', margin: '15px 0 0 0', fontSize: '16px', lineHeight: '14px' }}>
               {title}
               {tooltip && (
                 <i
@@ -39,7 +39,7 @@ class SettingItem extends React.Component {
                 </i>
               )}
             </h6>
-            <h5 style={{ padding: '0 0 10px 15px', margin: '2px 0 0 0', fontSize: '12px' }} className='uk-text-muted'>
+            <h5 style={{ padding: '0 15px 10px 15px', margin: '2px 0 0 0', fontSize: '12px' }} className='uk-text-muted'>
               {subtitle}
             </h5>
           </div>

@@ -228,7 +228,7 @@ class TicketsContainer extends React.Component {
     }
 
     const selectAllCheckbox = (
-      <div style={{ marginLeft: 17 }}>
+      <div style={{ marginRight: 17 }}>
         <input
           type='checkbox'
           id={'select_all'}

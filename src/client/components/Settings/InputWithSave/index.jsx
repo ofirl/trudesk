@@ -58,7 +58,7 @@ class InputWithSave extends React.Component {
 
     return (
       <div className='uk-width-1-1 uk-float-right' style={{ width: width }}>
-        <div className='uk-width-3-4 uk-float-left' style={{ paddingRight: '10px' }}>
+        <div className='uk-width-3-4 uk-float-left' style={{ paddingLeft: '10px' }}>
           <input
             id={this.props.stateName}
             className='md-input md-input-width-medium'

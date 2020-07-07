@@ -48,7 +48,7 @@ TableHeader.propTypes = {
 }
 
 TableHeader.defaultProps = {
-  textAlign: 'left'
+  // textAlign: 'left'
 }
 
 export default TableHeader

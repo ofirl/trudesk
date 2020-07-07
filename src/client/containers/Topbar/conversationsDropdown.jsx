@@ -96,7 +96,7 @@ class ConversationsDropdownPartial extends React.Component {
                       <div className='messageSnippet'>
                         <span>{conversation.recentMessage}</span>
                       </div>
-                      <div className='messageDate' style={{ position: 'absolute', top: '10px', right: '15px' }}>
+                      <div className='messageDate' style={{ position: 'absolute', top: '10px', left: '15px' }}>
                         <time dateTime={formattedTimestamp}>{formattedDate}</time>
                       </div>
                     </div>

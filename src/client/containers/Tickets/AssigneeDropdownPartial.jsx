@@ -52,7 +52,7 @@ class AssigneeDropdownPartial extends React.Component {
         override={true}
         leftArrow={true}
         topOffset={125}
-        rightOffset={35}
+        leftOffset={25}
         minHeight={215}
         rightComponent={
           <a

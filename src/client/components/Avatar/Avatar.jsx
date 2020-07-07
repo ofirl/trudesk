@@ -20,7 +20,7 @@ class Avatar extends React.Component {
 
     return (
       <Fragment>
-        <div className='relative uk-clearfix uk-float-right uk-display-inline-block'>
+        <div className='relative uk-clearfix uk-float-left uk-display-inline-block'>
           <img
             className='profile-pic uk-border-circle'
             style={{ height: size, width: size }}

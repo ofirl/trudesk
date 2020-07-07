@@ -62,7 +62,7 @@ const fetchTicket = parent => {
 const showPriorityConfirm = () => {
   UIkit.modal.confirm(
     'Selected Priority does not exist for this ticket type.<br><br><strong>Please select a new priority</strong>',
-    () => {},
+    () => { },
     { cancelButtonClass: 'uk-hidden' }
   )
 }
@@ -72,7 +72,7 @@ class SingleTicketContainer extends React.Component {
   @observable ticket = null
   @observable isSubscribed = false
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.onSocketUpdateComments = this.onSocketUpdateComments.bind(this)
@@ -85,7 +85,7 @@ class SingleTicketContainer extends React.Component {
     this.onUpdateTicketTags = this.onUpdateTicketTags.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     socket.socket.on('updateComments', this.onSocketUpdateComments)
     socket.socket.on('updateNotes', this.onUpdateTicketNotes)
     socket.socket.on('updateAssignee', this.onUpdateAssignee)
@@ -99,12 +99,12 @@ class SingleTicketContainer extends React.Component {
     this.props.fetchGroups()
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     helpers.resizeFullHeight()
     helpers.setupScrollers()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     socket.socket.off('updateComments', this.onSocketUpdateComments)
     socket.socket.off('updateNotes', this.onUpdateTicketNotes)
     socket.socket.off('updateAssignee', this.onUpdateAssignee)
@@ -117,15 +117,15 @@ class SingleTicketContainer extends React.Component {
     this.props.unloadGroups()
   }
 
-  onSocketUpdateComments (data) {
+  onSocketUpdateComments(data) {
     if (this.ticket._id === data._id) this.ticket.comments = data.comments
   }
 
-  onUpdateTicketNotes (data) {
+  onUpdateTicketNotes(data) {
     if (this.ticket._id === data._id) this.ticket.notes = data.notes
   }
 
-  onUpdateAssignee (data) {
+  onUpdateAssignee(data) {
     if (this.ticket._id === data._id) {
       this.ticket.assignee = data.assignee
       if (this.ticket.assignee && this.ticket.assignee._id === this.props.shared.sessionUser._id)
@@ -133,27 +133,27 @@ class SingleTicketContainer extends React.Component {
     }
   }
 
-  onUpdateTicketType (data) {
+  onUpdateTicketType(data) {
     if (this.ticket._id === data._id) this.ticket.type = data.type
   }
 
-  onUpdateTicketPriority (data) {
+  onUpdateTicketPriority(data) {
     if (this.ticket._id === data._id) this.ticket.priority = data.priority
   }
 
-  onUpdateTicketGroup (data) {
+  onUpdateTicketGroup(data) {
     if (this.ticket._id === data._id) this.ticket.group = data.group
   }
 
-  onUpdateTicketDueDate (data) {
+  onUpdateTicketDueDate(data) {
     if (this.ticket._id === data._id) this.ticket.dueDate = data.dueDate
   }
 
-  onUpdateTicketTags (data) {
+  onUpdateTicketTags(data) {
     if (this.ticket._id === data._id) this.ticket.tags = data.tags
   }
 
-  onCommentNoteSubmit (e, type) {
+  onCommentNoteSubmit(e, type) {
     e.preventDefault()
     const isNote = type === 'note'
     axios
@@ -185,7 +185,7 @@ class SingleTicketContainer extends React.Component {
       })
   }
 
-  onSubscriberChanged (e) {
+  onSubscriberChanged(e) {
     axios
       .put(`/api/v1/tickets/${this.ticket._id}/subscribe`, {
         user: this.props.shared.sessionUser._id,
@@ -203,13 +203,13 @@ class SingleTicketContainer extends React.Component {
   }
 
   @computed
-  get notesTagged () {
+  get notesTagged() {
     this.ticket.notes.forEach(i => (i.isNote = true))
 
     return this.ticket.notes
   }
 
-  @computed get commentsAndNotes () {
+  @computed get commentsAndNotes() {
     if (!this.ticket) return []
     if (!helpers.canUser('tickets:notes', true)) {
       return sortBy(this.ticket.comments, 'date')
@@ -221,22 +221,22 @@ class SingleTicketContainer extends React.Component {
     return commentsAndNotes
   }
 
-  @computed get hasCommentsOrNotes () {
+  @computed get hasCommentsOrNotes() {
     if (!this.ticket) return false
     return this.ticket.comments.length > 0 || this.ticket.notes.length > 0
   }
 
-  render () {
+  render() {
     const mappedGroups = this.props.groupsState
       ? this.props.groupsState.groups.map(group => {
-          return { text: group.get('name'), value: group.get('_id') }
-        })
+        return { text: group.get('name'), value: group.get('_id') }
+      })
       : []
 
     const mappedTypes = this.props.common.ticketTypes
       ? this.props.common.ticketTypes.map(type => {
-          return { text: type.name, value: type._id, raw: type }
-        })
+        return { text: type.name, value: type._id, raw: type }
+      })
       : []
 
     // Perms
@@ -274,7 +274,7 @@ class SingleTicketContainer extends React.Component {
                           <a
                             role='button'
                             title='Set Assignee'
-                            style={{ float: 'left' }}
+                            style={{ float: 'right' }}
                             className='relative no-ajaxy'
                             onClick={() => socket.socket.emit('updateAssigneeList')}
                           >
@@ -478,8 +478,8 @@ class SingleTicketContainer extends React.Component {
                                 <div key={item._id} className='history-item'>
                                   <time dateTime={helpers.formatDate(item.date, this.props.common.longDateFormat)} />
                                   <em>
-                                    Action by: <span>{item.owner.fullname}</span> 
-                                    <span> {helpers.formatDate(item.date, this.props.common.longDateFormat)} </span>
+                                    Action by: <span>{item.owner.fullname}</span>
+                                    <span className="uk-float-right" style={{ apddingRight: '1em', paddingLeft: '1em' }}> <p> {helpers.formatDate(item.date, 'MMM DD, YYYY hh:mm')} </p> </span>
                                   </em>
                                   <p>{item.description}</p>
                                 </div>
@@ -492,7 +492,7 @@ class SingleTicketContainer extends React.Component {
                 </div>
               </div>
               {/* Right Side */}
-              <div className='page-message nopadding' style={{ marginLeft: 360 }}>
+              <div className='page-message nopadding' style={{ marginRight: 360 }}>
                 <div className='page-title-right noshadow'>
                   <div className='page-top-comments uk-float-right'>
                     <a
