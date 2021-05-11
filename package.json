@@ -63,7 +63,7 @@
     "jss": "10.3.0",
     "jss-rtl": "0.3.0",
     "ldapjs": "1.0.2",
-    "lodash": "4.17.11",
+    "lodash": "4.17.21",
     "mailparser": "2.4.3",
     "marked": "0.6.1",
     "matchdep": "2.0.0",
